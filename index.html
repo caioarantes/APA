@@ -1,51 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Parque Estadual Fonte Grande</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map {
-      height: 100vh; /* Full height */
-    }
-  </style>
+<html lang="en">
+
+<head></head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>APA</title>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 20px;
+ }
+
+ #map {
+ height: 500px; /* Adjust as needed */
+ width: 100%;
+ }
+
+ #error-message {
+ color: red;
+ padding: 10px;
+ background-color: #eee;
+ border: 1px solid #ccc;
+ margin-bottom: 10px;
+ display: none;
+ }
+
+ #plot-container {
+    width: 100%; /* Make the container take the full width */
+    margin: 20px auto; /* Center the iframe vertically */
+    border: 1px solid #ccc; /* Add a border for visual separation */
+ }
+
+ #plot-iframe {
+    width: 100%; /* Make the iframe take the full width */
+    height: 600px; /* Adjust as needed */
+    border: none; /* Remove the default iframe border */
+ }
+ </style>
 </head>
+
 <body>
-  <div id="map"></div>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Initialize the map
-    const map = L.map('map').setView([0, 0], 2); // Default view
+ <h1>Parque Estadual Fonte Grande</h1>
+ <p>Relatório online - Imagem mais recente.</p>
 
-    // Add a tile layer (background map)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+<h2>Images</h2>
+<img src="parque fonte grande.png" alt="Image 1" style="width: 100%; height: auto;">
 
-    // Load GeoJSON data from the repository
-    fetch('Parque Estadual Fonte Grande.geojson') // Path to your GeoJSON file
-      .then(response => response.json())
-      .then(data => {
-        // Add GeoJSON layer to the map
-        const geojsonLayer = L.geoJSON(data, {
-          style: {
-            color: 'green',
-            weight: 2
-          }
-        }).addTo(map);
+ <h2>Análise temporal do indice médio de todo o parque.</h2>
+ <div id="plot-container">
+ <iframe id="plot-iframe" src="plot.html"></iframe>
+ </div>
 
-        // Get the bounds of the GeoJSON layer
-        const bounds = geojsonLayer.getBounds();
-        console.log('GeoJSON Bounds:', bounds); // Debugging: Log the bounds
+ <h2>Mapa</h2>
+ <div id="error-message"></div>
+ <div id="map"></div>
 
-        // Fit the map to the bounds
-        if (bounds.isValid()) {
-          map.fitBounds(bounds);
-        } else {
-          console.warn('Bounds are invalid. Setting manual view.');
-          map.setView([-20.3150, -40.3150], 14); // Replace with approximate center
-        }
-      })
-      .catch(error => console.error('Error loading GeoJSON:', error));
-  </script>
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+ <script>
+ const map = L.map('map').setView([-20.304598, -40.339163], 16);
+
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ attribution: '© OpenStreetMap contributors - ' + new Date().getTime(),
+ maxZoom: 19,
+ }).addTo(map);
+ </script>
 </body>
+
 </html>
