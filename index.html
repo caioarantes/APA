@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+  <title>Parque Estadual Fonte Grande</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh; /* Full height */
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([0, 0], 2); // Default view
+
+    // Add a tile layer (background map)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Load GeoJSON data from the repository
+    fetch('parque_fonte_grande.geojson') // Path to your GeoJSON file
+      .then(response => response.json())
+      .then(data => {
+        // Add GeoJSON layer to the map
+        const geojsonLayer = L.geoJSON(data, {
+          style: {
+            color: 'green',
+            weight: 2
+          }
+        }).addTo(map);
+
+        // Zoom to the bounds of the GeoJSON layer
+        map.fitBounds(geojsonLayer.getBounds());
+      })
+      .catch(error => console.error('Error loading GeoJSON:', error));
+  </script>
 </body>
 </html>
