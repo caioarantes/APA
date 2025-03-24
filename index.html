@@ -1,270 +1,167 @@
 <!DOCTYPE html>
+<script src="js/maps.js"></script>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parque Estadual Fonte Grande</title>
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet/dist/leaflet.css"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
-    <!-- Custom Styles -->
-    <style>
-      body {
-        font-family: "Helvetica Neue", Arial, sans-serif;
-        margin: 20px;
-        line-height: 1.7;
-        color: #444;
-        background-color: #f9f9f9;
-      }
-
-      h1,
-      h2 {
-        color: #333;
-        margin-bottom: 15px;
-        font-weight: 500;
-      }
-
-      h1 {
-        font-size: 2.5em;
-      }
-
-      h2 {
-        font-size: 1.8em;
-      }
-
-      p {
-        margin-bottom: 20px;
-        font-size: 1.1em;
-      }
-
-      a {
-        color: #007bff;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      /* Map Styles */
-      #map {
-        height: 500px;
-        width: 100%;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        border-radius: 8px;
-      }
-
-      #error-message {
-        color: #dc3545;
-        padding: 10px;
-        background-color: #f8d7da;
-        border: 1px solid #f5c6cb;
-        margin-bottom: 10px;
-        border-radius: 4px;
-        display: none;
-      }
-
-      /* Plot Container Styles */
-      #plot-container {
-        width: 100%;
-        margin: 30px auto;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      #plot-iframe {
-        width: 100%;
-        height: 600px;
-        border: none;
-      }
-
-      /* Image Styles */
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 30px auto;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        border-radius: 8px;
-      }
-
-      /* Figure Styles */
-      figure {
-        margin: 20px 0;
-      }
-
-      figcaption {
-        font-style: italic;
-        text-align: center;
-        margin-top: 5px;
-        color: #777;
-      }
-    </style>
-    <!-- MathJax Configuration -->
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [["\\(", "\\)"]],
-          packages: { "[+]": ["ui/menu"] },
-        },
-        options: {
-          menuOptions: {
-            settings: {
-              explorer: false,
-            },
-          },
-        },
-        startup: {
-          pageReady: () => {
-            console.log("MathJax está pronto!");
-          },
-        },
-      };
-    </script>
+    <!-- MathJax CDN -->
     <script
       id="MathJax-script"
       async
-      src="/extensions/mathjax@3/es5/tex-mml-chtml.js"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
   </head>
   <body>
-    <!-- Main Title -->
-    <h1>
-      Relatório do Parque Estadual Fonte Grande - 24 de março de 2025
-    </h1>
+    <header>
+      <h1>
+        Relatório do Parque Estadual Fonte Grande - 24 de março de 2025
+      </h1>
+    </header>
 
-    <!-- Introductory Paragraph -->
-    <p>
-      O Parque Estadual da Fonte Grande é uma unidade de conservação brasileira
-      criada em 7 de agosto de 1986 no município de Vitória, Espírito Santo. Com
-      uma área de 260 hectares, abrange os morros da Fonte Grande, Mulundú, Santa
-      Clara, Pedra do Vigia, Bastos e Pedra dos Olhos.
-    </p>
+    <main>
+      <section id="introduction">
+        <p>
+          O Parque Estadual da Fonte Grande é uma unidade de conservação
+          brasileira criada em 7 de agosto de 1986 no município de Vitória,
+          Espírito Santo. Com uma área de 260 hectares, abrange os morros da
+          Fonte Grande, Mulundú, Santa Clara, Pedra do Vigia, Bastos e Pedra
+          dos Olhos.
+        </p>
+      </section>
 
-    <!-- General Characteristics Section -->
-    <h2>Características Gerais</h2>
-    <p>
-      O parque é a última área contígua de grande porte com vegetação
-      característica de encostas da Mata Atlântica. A topografia é acidentada, com
-      relevo ondulado, incluindo vales e pontões.
-    </p>
+      <section id="general-characteristics">
+        <h2>Características Gerais</h2>
+        <p>
+          O parque é a última área contígua de grande porte com vegetação
+          característica de encostas da Mata Atlântica. A topografia é
+          acidentada, com relevo ondulado, incluindo vales e pontões.
+        </p>
+      </section>
 
-    <!-- Real Color Composition Section -->
-    <h2>Composição em Cor Real - 10 de Março de 2025</h2>
-    <p>
-      Imagem mais recente disponível (sem nuvem) em
-      <strong>10 de março de 2025</strong>. Cada pixel representa 10m x 10m. A
-      imagem foi capturada pelo satélite Sentinel-2.
-    </p>
-    <figure>
-      <img
-        src="rgb.png"
-        alt="Composição em cor real do Parque Estadual Fonte Grande"
-      />
-      <figcaption>
-        Composição em Cor Real do Parque Estadual Fonte Grande
-      </figcaption>
-    </figure>
+      <section id="real-color-composition">
+        <h2>Composição em Cor Real - 10 de Março de 2025</h2>
+        <p>
+          Imagem mais recente disponível (sem nuvem) em
+          <strong>10 de março de 2025</strong>. Cada pixel representa 10m x
+          10m. A imagem foi capturada pelo satélite Sentinel-2.
+        </p>
+        <figure>
+          <img
+            src="images/rgb.png"
+            alt="Composição em cor real do Parque Estadual Fonte Grande"
+          />
+          <figcaption>
+            Composição em Cor Real do Parque Estadual Fonte Grande
+          </figcaption>
+        </figure>
+      </section>
 
-    <!-- Vegetation Indices Section -->
-    <h2>Índices de Vegetação</h2>
-    <p>
-      Os índices de vegetação são ferramentas para monitorar a saúde e a cobertura
-      vegetal de uma área. Eles são calculados a partir de combinações de bandas
-      espectrais de imagens de satélite e podem fornecer informações sobre a
-      vegetação e o solo.
-    </p>
+      <section id="vegetation-indices">
+        <h2>Índices de Vegetação</h2>
+        <p>
+          Os índices de vegetação são ferramentas para monitorar a saúde e a
+          cobertura vegetal de uma área. Eles são calculados a partir de
+          combinações de bandas espectrais de imagens de satélite e podem
+          fornecer informações sobre a vegetação e o solo.
+        </p>
 
-    <!-- NDVI Section -->
-    <h3>Índice de Vegetação por Diferença Normalizada (NDVI)</h3>
-    <p>
-      O NDVI aproveita as diferenças na forma como as plantas refletem a luz. A
-      vegetação saudável contém muita clorofila, que absorve intensamente a luz
-      vermelha visível para a fotossíntese, ao mesmo tempo em que reflete grande
-      parte da radiação infravermelha próxima (NIR). Superfícies como solo e água
-      refletem luz vermelha e NIR de maneira mais uniforme. O NDVI varia de -1 a
-      +1; valores próximos de +1 indicam vegetação densa e saudável, enquanto
-      valores próximos de 0 ou negativos sugerem pouca ou nenhuma vegetação.
-    </p>
-    <figure>
-      <img src="ndvi.png" alt="Mapa de NDVI do Parque Estadual Fonte Grande" />
-      <figcaption>Mapa de NDVI do Parque Estadual Fonte Grande</figcaption>
-    </figure>
+        <article id="ndvi">
+          <h3>
+            Índice de Vegetação por Diferença Normalizada (NDVI)
+          </h3>
+          <p>
+            O NDVI aproveita as diferenças na forma como as plantas refletem a
+            luz. A vegetação saudável contém muita clorofila, que absorve
+            intensamente a luz vermelha visível para a fotossíntese, ao mesmo
+            tempo em que reflete grande parte da radiação infravermelha
+            próxima (NIR). Superfícies como solo e água refletem luz vermelha
+            e NIR de maneira mais uniforme. O NDVI varia de -1 a +1; valores
+            próximos de +1 indicam vegetação densa e saudável, enquanto
+            valores próximos de 0 ou negativos sugerem pouca ou nenhuma
+            vegetação.
+          </p>
+          <figure>
+            <img
+              src="images/ndvi.png"
+              alt="Mapa de NDVI do Parque Estadual Fonte Grande"
+            />
+            <figcaption>
+              Mapa de NDVI do Parque Estadual Fonte Grande
+            </figcaption>
+          </figure>
+        </article>
 
-    <!-- EVI Section -->
-    <h3>Índice de Vegetação Aprimorado (EVI)</h3>
-    <p>
-      O EVI é uma alternativa ao NDVI, projetada para melhorar a sensibilidade em
-      áreas de vegetação densa e reduzir os efeitos da atmosfera e do solo. Ele
-      utiliza bandas adicionais, como o azul, para corrigir distorções causadas por
-      partículas na atmosfera e pela refletância do solo. O EVI é particularmente
-      útil em regiões tropicais, onde a vegetação é exuberante e o NDVI pode
-      saturar, fornecendo uma visão mais detalhada da saúde da vegetação.
-    </p>
-    <figure>
-      <img src="evi.png" alt="Mapa de EVI do Parque Estadual Fonte Grande" />
-      <figcaption>Mapa de EVI do Parque Estadual Fonte Grande</figcaption>
-    </figure>
+        <article id="evi">
+          <h3>Índice de Vegetação Aprimorado (EVI)</h3>
+          <p>
+            O EVI é uma alternativa ao NDVI, projetada para melhorar a
+            sensibilidade em áreas de vegetação densa e reduzir os efeitos da
+            atmosfera e do solo. Ele utiliza bandas adicionais, como o azul,
+            para corrigir distorções causadas por partículas na atmosfera e
+            pela refletância do solo. O EVI é particularmente útil em regiões
+            tropicais, onde a vegetação é exuberante e o NDVI pode saturar,
+            fornecendo uma visão mais detalhada da saúde da vegetação.
+          </p>
+          <p>
+            Estudos como o realizado na Reserva Biológica de Sooretama, também
+            no Espírito Santo, demonstram a eficácia do EVI na análise das
+            mudanças ocorridas no domínio do tempo no dossel
+            florestal (<a
+              href="https://www.scielo.br/j/rarv/a/9DNVRhmcnxJkZyhy84HZDGF/"
+              target="_blank"
+              >Enhanced Vegetation Index (EVI) na análise da dinâmica da
+              vegetação da reserva biológica de Sooretama, ES</a
+            >).
+          </p>
+          <figure>
+            <img
+              src="images/evi.png"
+              alt="Mapa de EVI do Parque Estadual Fonte Grande"
+            />
+            <figcaption>Mapa de EVI do Parque Estadual Fonte Grande</figcaption>
+          </figure>
+        </article>
+      </section>
 
-    <!-- Temporal Analysis Section -->
-    <h2>Análise Temporal do Índice Médio de Todo o Parque</h2>
-    <p>
-      O gráfico apresenta a média do NDVI da área nos últimos três anos, juntamente
-      com a precipitação mensal em barras. A análise revela uma clara sazonalidade
-      no NDVI, com picos coincidindo ou seguindo de perto os períodos de maior
-      precipitação. Essa relação sugere uma forte dependência da vegetação à
-      disponibilidade de água, onde a alta precipitação impulsiona o crescimento
-      vegetal e, consequentemente, eleva o NDVI. Em contraste, a diminuição da
-      precipitação está associada a um NDVI mais baixo, indicando possível estresse
-      hídrico na vegetação. A observação da sazonalidade é importante para
-      entender a dinâmica ecossistêmica da área.
-    </p>
-    <div id="plot-container">
-      <iframe id="plot-iframe" src="plot.html"></iframe>
-    </div>
+      <section id="temporal-analysis">
+        <h2>Análise Temporal do Índice Médio de Todo o Parque</h2>
+        <p>
+          O gráfico apresenta a média do NDVI da área nos últimos três anos,
+          juntamente com a precipitação mensal em barras. A análise revela
+          uma clara sazonalidade no NDVI, com picos coincidindo ou seguindo de
+          perto os períodos de maior precipitação. Essa relação sugere uma
+          forte dependência da vegetação à disponibilidade de água, onde a
+          alta precipitação impulsiona o crescimento vegetal e,
+          consequentemente, eleva o NDVI. Em contraste, a diminuição da
+          precipitação está associada a um NDVI mais baixo, indicando possível
+          estresse hídrico na vegetação. A observação da sazonalidade é
+          importante para entender a dinâmica ecossistêmica da área.
+        </p>
+        <div id="plot-container">
+          <iframe id="plot-iframe" src="plot.html"></iframe>
+        </div>
+      </section>
 
-    <!-- Map Section -->
-    <h2>Mapa</h2>
-    <div id="error-message"></div>
-    <div id="map"></div>
+      <section id="map-section">
+        <h2>Mapa</h2>
+        <div id="error-message"></div>
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Add footer content here if needed -->
+    </footer>
 
     <!-- Leaflet Script -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-      const map = L.map("map").setView([-20.304598, -40.339163], 16);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          "© OpenStreetMap contributors - " + new Date().getFullYear(),
-        maxZoom: 19,
-      }).addTo(map);
-
-      function style(feature) {
-        return {
-          fillColor: "green",
-          weight: 2,
-          opacity: 1,
-          color: "white",
-          fillOpacity: 0.5,
-        };
-      }
-
-      fetch("parque.geojson")
-        .then((response) => response.json())
-        .then((data) => {
-          L.geoJSON(data, {
-            style: style,
-          }).addTo(map);
-        })
-        .catch((error) =>
-          console.error("Erro ao carregar GeoJSON:", error)
-        );
-    </script>
+    <script src="js/map.js"></script>
   </body>
 </html>

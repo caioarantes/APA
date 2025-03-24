@@ -1,0 +1,125 @@
+/* css/style.css */
+
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.7;
+  color: #444;
+  background-color: #f9f9f9;
+}
+
+header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1,
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Map Styles */
+#map {
+  height: 500px;
+  width: 100%;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+#error-message {
+  color: #dc3545;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+/* Plot Container Styles */
+#plot-container {
+  width: 100%;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#plot-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* Image Styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+/* Figure Styles */
+figure {
+  margin: 20px 0;
+}
+
+figcaption {
+  font-style: italic;
+  text-align: center;
+  margin-top: 5px;
+  color: #777;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+}
