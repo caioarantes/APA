@@ -22,7 +22,7 @@
     }).addTo(map);
 
     // Load GeoJSON data from the repository
-    fetch('parque_fonte_grande.geojson') // Path to your GeoJSON file
+    fetch('Parque Estadual Fonte Grande.geojson') // Path to your GeoJSON file
       .then(response => response.json())
       .then(data => {
         // Add GeoJSON layer to the map
@@ -33,8 +33,17 @@
           }
         }).addTo(map);
 
-        // Zoom to the bounds of the GeoJSON layer
-        map.fitBounds(geojsonLayer.getBounds());
+        // Get the bounds of the GeoJSON layer
+        const bounds = geojsonLayer.getBounds();
+        console.log('GeoJSON Bounds:', bounds); // Debugging: Log the bounds
+
+        // Fit the map to the bounds
+        if (bounds.isValid()) {
+          map.fitBounds(bounds);
+        } else {
+          console.warn('Bounds are invalid. Setting manual view.');
+          map.setView([-20.3150, -40.3150], 14); // Replace with approximate center
+        }
       })
       .catch(error => console.error('Error loading GeoJSON:', error));
   </script>
