@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>APA</title>
-    <!-- Folha de estilo Leaflet -->
+    <title>Parque Estadual Fonte Grande</title>
+    <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet/dist/leaflet.css"
     />
-    <!-- Estilos personalizados -->
+    <!-- Custom Styles -->
     <style>
       body {
         font-family: "Helvetica Neue", Arial, sans-serif;
@@ -48,7 +48,7 @@
         text-decoration: underline;
       }
 
-      /* Estilos do mapa */
+      /* Map Styles */
       #map {
         height: 500px;
         width: 100%;
@@ -67,7 +67,7 @@
         display: none;
       }
 
-      /* Estilos do contêiner do gráfico */
+      /* Plot Container Styles */
       #plot-container {
         width: 100%;
         margin: 30px auto;
@@ -83,7 +83,7 @@
         border: none;
       }
 
-      /* Estilos da imagem */
+      /* Image Styles */
       img {
         max-width: 100%;
         height: auto;
@@ -94,21 +94,52 @@
         border-radius: 8px;
       }
 
-      /* Adicione algum espaçamento e estilo às tags br */
-      br {
-        content: "";
-        margin: 0.5em 0;
-        display: block;
+      /* Figure Styles */
+      figure {
+        margin: 20px 0;
+      }
+
+      figcaption {
+        font-style: italic;
+        text-align: center;
+        margin-top: 5px;
+        color: #777;
       }
     </style>
+    <!-- MathJax Configuration -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          packages: { "[+]": ["ui/menu"] },
+        },
+        options: {
+          menuOptions: {
+            settings: {
+              explorer: false,
+            },
+          },
+        },
+        startup: {
+          pageReady: () => {
+            console.log("MathJax está pronto!");
+          },
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="/extensions/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
   </head>
   <body>
-    <!-- Título principal -->
+    <!-- Main Title -->
     <h1>
-      Parque Estadual Fonte Grande - relatório produzido em 24 de março de 2025
+      Relatório do Parque Estadual Fonte Grande - 24 de março de 2025
     </h1>
 
-    <!-- Parágrafo introdutório -->
+    <!-- Introductory Paragraph -->
     <p>
       O Parque Estadual da Fonte Grande é uma unidade de conservação brasileira
       criada em 7 de agosto de 1986 no município de Vitória, Espírito Santo. Com
@@ -116,127 +147,117 @@
       Clara, Pedra do Vigia, Bastos e Pedra dos Olhos.
     </p>
 
-    <!-- Seção de Características Gerais -->
-    <h2>Características gerais</h2>
+    <!-- General Characteristics Section -->
+    <h2>Características Gerais</h2>
     <p>
       O parque é a última área contígua de grande porte com vegetação
       característica de encostas da Mata Atlântica. A topografia é acidentada, com
       relevo ondulado, incluindo vales e pontões.
     </p>
-    <p>
-      Imagem mais recente disponível (sem nuvem) -
-      <strong>10 de março de 2025</strong>. Abaixo está a composição em cor real
-      da área do parque. Cada pixel representa 10m x 10m.
-      <br />
-      A imagem foi capturada pelo satélite Sentinel-2.
-    </p>
-    <!-- Imagem da composição em cor real -->
-    <img
-      src="rgb.png"
-      alt="Composição em cor real do Parque Estadual Fonte Grande"
-    />
 
-    <!-- Seção do Índice NDVI -->
+    <!-- Real Color Composition Section -->
+    <h2>Composição em Cor Real - 10 de Março de 2025</h2>
     <p>
-      Abaixo está o índice NDVI (Índice de Vegetação por Diferença Normalizada) da
-      mesma imagem. O NDVI aproveita as diferenças na forma como as plantas
-      refletem a luz.
-      <br />
-      A vegetação saudável contém muita clorofila, que absorve intensamente a luz
+      Imagem mais recente disponível (sem nuvem) em
+      <strong>10 de março de 2025</strong>. Cada pixel representa 10m x 10m. A
+      imagem foi capturada pelo satélite Sentinel-2.
+    </p>
+    <figure>
+      <img
+        src="rgb.png"
+        alt="Composição em cor real do Parque Estadual Fonte Grande"
+      />
+      <figcaption>
+        Composição em Cor Real do Parque Estadual Fonte Grande
+      </figcaption>
+    </figure>
+
+    <!-- Vegetation Indices Section -->
+    <h2>Índices de Vegetação</h2>
+    <p>
+      Os índices de vegetação são ferramentas para monitorar a saúde e a cobertura
+      vegetal de uma área. Eles são calculados a partir de combinações de bandas
+      espectrais de imagens de satélite e podem fornecer informações sobre a
+      vegetação e o solo.
+    </p>
+
+    <!-- NDVI Section -->
+    <h3>Índice de Vegetação por Diferença Normalizada (NDVI)</h3>
+    <p>
+      O NDVI aproveita as diferenças na forma como as plantas refletem a luz. A
+      vegetação saudável contém muita clorofila, que absorve intensamente a luz
       vermelha visível para a fotossíntese, ao mesmo tempo em que reflete grande
-      parte da radiação infravermelha próxima (NIR).
-      <br />
-      Superfícies como solo e água refletem luz vermelha e NIR de maneira mais
-      uniforme.
-      <br />
-      O NDVI varia de 0 a 1; valores próximos de 1 indicam vegetação densa e
-      saudável, enquanto valores próximos de 0 sugerem pouca ou nenhuma vegetação.
+      parte da radiação infravermelha próxima (NIR). Superfícies como solo e água
+      refletem luz vermelha e NIR de maneira mais uniforme. O NDVI varia de -1 a
+      +1; valores próximos de +1 indicam vegetação densa e saudável, enquanto
+      valores próximos de 0 ou negativos sugerem pouca ou nenhuma vegetação.
     </p>
-    <!-- Imagem do mapa NDVI -->
-    <img
-      src="ndvi.png"
-      alt="Mapa de NDVI do Parque Estadual Fonte Grande"
-    />
+    <figure>
+      <img src="ndvi.png" alt="Mapa de NDVI do Parque Estadual Fonte Grande" />
+      <figcaption>Mapa de NDVI do Parque Estadual Fonte Grande</figcaption>
+    </figure>
 
-    <!-- Seção do Índice EVI -->
+    <!-- EVI Section -->
+    <h3>Índice de Vegetação Aprimorado (EVI)</h3>
     <p>
-      Abaixo está o índice EVI (Índice de Vegetação Aprimorado) da mesma imagem.
       O EVI é uma alternativa ao NDVI, projetada para melhorar a sensibilidade em
-      áreas de vegetação densa e reduzir os efeitos da atmosfera e do solo.
-      <br />
-      Ele utiliza bandas adicionais, como o azul, para corrigir distorções causadas
-      por partículas na atmosfera e pela refletância do solo.
-      <br />
-      O EVI é particularmente útil em regiões tropicais, onde a vegetação é
-      exuberante e o NDVI pode saturar, fornecendo uma visão mais detalhada da
-      saúde da vegetação.
+      áreas de vegetação densa e reduzir os efeitos da atmosfera e do solo. Ele
+      utiliza bandas adicionais, como o azul, para corrigir distorções causadas por
+      partículas na atmosfera e pela refletância do solo. O EVI é particularmente
+      útil em regiões tropicais, onde a vegetação é exuberante e o NDVI pode
+      saturar, fornecendo uma visão mais detalhada da saúde da vegetação.
     </p>
-    <!-- Imagem do mapa EVI -->
-    <img
-      src="evi.png"
-      alt="Mapa de EVI do Parque Estadual Fonte Grande"
-    />
+    <figure>
+      <img src="evi.png" alt="Mapa de EVI do Parque Estadual Fonte Grande" />
+      <figcaption>Mapa de EVI do Parque Estadual Fonte Grande</figcaption>
+    </figure>
 
-    <!-- Seção de Análise Temporal -->
-    <h2>Análise temporal do indice médio de todo o parque.</h2>
-
+    <!-- Temporal Analysis Section -->
+    <h2>Análise Temporal do Índice Médio de Todo o Parque</h2>
     <p>
-      O gráfico apresenta a média do NDVI (Índice de Vegetação por Diferença
-      Normalizada) da área nos últimos três anos, juntamente com a precipitação
-      mensal em barras.
-      <br />
-      A análise revela uma clara sazonalidade no NDVI, com picos coincidindo ou
-      seguindo de perto os períodos de maior precipitação.
-      <br />
-      Essa relação sugere uma forte dependência da vegetação à disponibilidade de
-      água, onde a alta precipitação impulsiona o crescimento vegetal e,
-      consequentemente, eleva o NDVI.
-      <br />
-      Em contraste, a diminuição da precipitação está associada a um NDVI mais
-      baixo, indicando possível estresse hídrico na vegetação.
-      <br />
-      A observação da sazonalidade é importante para entender a dinâmica
-      ecossistêmica da área.
+      O gráfico apresenta a média do NDVI da área nos últimos três anos, juntamente
+      com a precipitação mensal em barras. A análise revela uma clara sazonalidade
+      no NDVI, com picos coincidindo ou seguindo de perto os períodos de maior
+      precipitação. Essa relação sugere uma forte dependência da vegetação à
+      disponibilidade de água, onde a alta precipitação impulsiona o crescimento
+      vegetal e, consequentemente, eleva o NDVI. Em contraste, a diminuição da
+      precipitação está associada a um NDVI mais baixo, indicando possível estresse
+      hídrico na vegetação. A observação da sazonalidade é importante para
+      entender a dinâmica ecossistêmica da área.
     </p>
-    <!-- Contêiner do gráfico -->
     <div id="plot-container">
       <iframe id="plot-iframe" src="plot.html"></iframe>
     </div>
 
-    <!-- Seção do Mapa -->
+    <!-- Map Section -->
     <h2>Mapa</h2>
     <div id="error-message"></div>
     <div id="map"></div>
 
-    <!-- Script Leaflet -->
+    <!-- Leaflet Script -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-      // Inicialização do mapa
       const map = L.map("map").setView([-20.304598, -40.339163], 16);
 
-      // Adição da camada de mapa OpenStreetMap
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           "© OpenStreetMap contributors - " + new Date().getFullYear(),
         maxZoom: 19,
       }).addTo(map);
 
-      // Função para adicionar estilo ao GeoJSON
       function style(feature) {
         return {
-          fillColor: "green", // Cor de preenchimento verde
-          weight: 2, // Largura da linha
-          opacity: 1, // Opacidade da linha
-          color: "white", // Cor da linha branca
-          fillOpacity: 0.5, // Opacidade do preenchimento
+          fillColor: "green",
+          weight: 2,
+          opacity: 1,
+          color: "white",
+          fillOpacity: 0.5,
         };
       }
 
-      // Fetch GeoJSON data
       fetch("parque.geojson")
         .then((response) => response.json())
         .then((data) => {
-          // Add GeoJSON layer to the map with style
           L.geoJSON(data, {
             style: style,
           }).addTo(map);
